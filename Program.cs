@@ -16,7 +16,7 @@
                     if (opcaoUsuario == null) throw new Exception("Escolha uma opção!");
                     switch (opcaoUsuario)
                     {
-                        case "1": 
+                        case "1":
                             CadastroFuncionario.Executar();
                             break;
                         case "2":

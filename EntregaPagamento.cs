@@ -22,6 +22,7 @@
 
                 int id = ObterID();
                 Funcionario funcionario = funcionarios.Find(f => f.FuncionarioId == id) ?? throw new Exception("Funcionário inválido!");
+                Console.WriteLine();
                 funcionario.EntregarPagamento();
                 Console.ReadKey();
             }
