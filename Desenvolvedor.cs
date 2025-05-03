@@ -36,6 +36,6 @@ namespace sistema_gerenciamento_funcionarios
         /// <summary>
         /// Sobrescreve o método CalcularImpostos da classe Funcionario para o valor específico de desenvolvedores.
         /// </summary>
-        public override decimal CalcularImpostos() => Salario * 0.1m;
+        public override decimal CalcularImpostos() => (Salario + HorasExtras * ValorHoraExtra) * 0.1m;
     }
 }

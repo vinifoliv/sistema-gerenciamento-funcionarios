@@ -92,6 +92,7 @@
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
+                    Console.WriteLine();
                 }
             }
         }
@@ -149,6 +150,7 @@
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
+                    Console.WriteLine();
                 }
             }
         }
@@ -237,6 +239,7 @@
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
+                    Console.WriteLine();
                 }
             }
         }
@@ -264,6 +267,7 @@
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
+                    Console.WriteLine();    
                 }
             }
         }
@@ -291,6 +295,7 @@
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
+                    Console.WriteLine();
                 }
             }
         }

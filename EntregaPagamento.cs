@@ -9,34 +9,38 @@
     {
         public static void Executar()
         {
-            try
+            while (true)
             {
-                Console.Clear();
-                Console.WriteLine("Entrega de Pagamento");
-                Console.WriteLine("====================");
-
-                List<Funcionario> funcionarios = Funcionario.Consultar(); // Obtém os funcionários cadastrados
-                if (funcionarios.Count == 0) // Tratamento especial caso não haja funcionários cadastrados
+                try
                 {
-                    Console.WriteLine("Nenhum funcionário cadastrado.");
-                    Console.ReadKey();
-                    return;
+                    Console.Clear();
+                    Console.WriteLine("Entrega de Pagamento");
+                    Console.WriteLine("====================");
+
+                    List<Funcionario> funcionarios = Funcionario.Consultar(); // Obtém os funcionários cadastrados
+                    if (funcionarios.Count == 0) // Tratamento especial caso não haja funcionários cadastrados
+                    {
+                        Console.WriteLine("Nenhum funcionário cadastrado.");
+                        Console.ReadKey();
+                        continue;
+                    }
+
+                    ListarFuncionarios(funcionarios); // Exibe os funcionários cadastrados
+
+                    int id = ObterID();
+                    // Verifica se o funcionário existe
+                    Funcionario funcionario = funcionarios.Find(f => f.FuncionarioId == id) ?? throw new Exception("Funcionário inválido!");
+                    Console.WriteLine(); // Linha em branco para melhor visualização
+                    funcionario.EntregarPagamento(); //  Entrega o pagamento do funcionário escolhido
+                    Console.ReadKey(); // Aguarda que o usuário pressione uma tecla para voltar ao menu principal
+                    return; // Retorna ao menu principal
                 }
-
-                ListarFuncionarios(funcionarios); // Exibe os funcionários cadastrados
-
-                int id = ObterID();
-                // Verifica se o funcionário existe
-                Funcionario funcionario = funcionarios.Find(f => f.FuncionarioId == id) ?? throw new Exception("Funcionário inválido!");
-                Console.WriteLine(); // Linha em branco para melhor visualização
-                funcionario.EntregarPagamento(); //  Entrega o pagamento do funcionário escolhido
-                Console.ReadKey(); // Aguarda que o usuário pressione uma tecla para voltar ao menu principal
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e.Message);
-                Console.ReadKey();
-                Console.WriteLine();
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Console.ReadKey();
+                    Console.WriteLine();
+                }
             }
         }
 
