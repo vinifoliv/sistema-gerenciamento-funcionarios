@@ -1,7 +1,8 @@
-﻿using System.Drawing;
-
-namespace sistema_gerenciamento_funcionarios
+﻿namespace sistema_gerenciamento_funcionarios
 {
+    /// <summary>
+    /// Classe responsável pela interface de cadastro de funcionários.
+    /// </summary>
     internal static class CadastroFuncionario
     {
         public static void Executar()
@@ -45,18 +46,22 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o nome do funcionário por input do usuário.
+        /// </summary>
         private static string ObterNome()
         {
             while (true)
             {
-                Console.Write("Nome: ");
-                string? nome = Console.ReadLine();
                 try
                 {
+                    Console.Write("Nome: ");
+                    string? nome = Console.ReadLine();
                     if (nome == null || nome == "") throw new Exception("Nenhum nome fornecido");
                     if (nome.Any(char.IsDigit)) throw new Exception("Nome inválido!");
                     return nome;
-                } catch (Exception e)
+                }
+                catch (Exception e)
                 {
                     Console.WriteLine(e.Message);
                     Console.ReadKey();
@@ -65,6 +70,9 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter a idade do funcionário por input do usuário.
+        /// </summary>
         private static int ObterIdade()
         {
             while (true)
@@ -88,6 +96,9 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o cargo do funcionário por input do usuário.
+        /// </summary>
         private static string ObterCargo()
         {
             while (true)
@@ -117,14 +128,17 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o salário do funcionário por input do usuário.
+        /// </summary>
         private static decimal ObterSalario()
         {
             while (true)
             {
-                Console.Write("Salário: R$ ");
-                string? input = Console.ReadLine();
                 try
                 {
+                    Console.Write("Salário: R$ ");
+                    string? input = Console.ReadLine();
                     if (input == null) throw new Exception("Salário não fornecido!");
                     bool ehNumerico = Decimal.TryParse(input, out decimal salario);
                     if (!ehNumerico) throw new Exception("Salário inválido!");
@@ -139,6 +153,9 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter a forma de pagamento do funcionário por input do usuário.
+        /// </summary>
         private static string ObterFormaPagamento()
         {
             while (true)
@@ -168,6 +185,10 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o método de entrega de pagamento do funcionário por input do usuário.
+        /// </summary>
+        /// <returns></returns>
         private static string ObterMetodoEntregaPagamento()
         {
             while (true)
@@ -194,6 +215,10 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o bônus do funcionário por input do usuário,
+        /// caso o cargo seja Gerente.
+        /// </summary>
         private static decimal ObterBonus()
         {
             while (true)
@@ -216,14 +241,19 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o valor da hora extra do funcionário por input do usuário,
+        /// caso o cargo seja Desenvolvedor.
+        /// </summary>
+        /// <returns></returns>
         private static decimal ObterValorHoraExtra()
         {
             while (true)
             {
-                Console.Write("Valor da hora extra: R$ ");
-                string? input = Console.ReadLine();
                 try
                 {
+                    Console.Write("Valor da hora extra: R$ ");
+                    string? input = Console.ReadLine();
                     if (input == null) throw new Exception("Valor da hora extra não fornecido!");
                     bool ehNumerico = Decimal.TryParse(input, out decimal valorHoraExtra);
                     if (!ehNumerico) throw new Exception("Valor da hora extra inválido!");
@@ -238,14 +268,19 @@ namespace sistema_gerenciamento_funcionarios
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter a quantidade de horas extras do funcionário por input do usuário,
+        /// caso o cargo seja Desenvolvedor.
+        /// </summary>
+        /// <returns></returns>
         private static int ObterHorasExtras()
         {
             while (true)
             {
-                Console.Write("Horas extras: ");
-                string? input = Console.ReadLine();
                 try
                 {
+                    Console.Write("Horas extras: ");
+                    string? input = Console.ReadLine();
                     if (input == null) throw new Exception("Horas extras não fornecidas!");
                     bool ehNumerico = int.TryParse(input, out int horasExtras);
                     if (!ehNumerico) throw new Exception("Horas extras inválidas!");

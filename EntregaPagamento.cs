@@ -1,5 +1,10 @@
 ﻿namespace sistema_gerenciamento_funcionarios
 {
+    /// <summary>
+    /// Classe responsável pela interface de entrega de pagamento.
+    /// Exibe os funcionários cadastrados, solicita o ID do funcionário 
+    /// escolhido e entrega o pagamento.
+    /// </summary>
     internal static class EntregaPagamento
     {
         public static void Executar()
@@ -10,21 +15,22 @@
                 Console.WriteLine("Entrega de Pagamento");
                 Console.WriteLine("====================");
 
-                List<Funcionario> funcionarios = Funcionario.Consultar();
-                if (funcionarios.Count == 0)
+                List<Funcionario> funcionarios = Funcionario.Consultar(); // Obtém os funcionários cadastrados
+                if (funcionarios.Count == 0) // Tratamento especial caso não haja funcionários cadastrados
                 {
                     Console.WriteLine("Nenhum funcionário cadastrado.");
                     Console.ReadKey();
                     return;
                 }
 
-                ListarFuncionarios(funcionarios);
+                ListarFuncionarios(funcionarios); // Exibe os funcionários cadastrados
 
                 int id = ObterID();
+                // Verifica se o funcionário existe
                 Funcionario funcionario = funcionarios.Find(f => f.FuncionarioId == id) ?? throw new Exception("Funcionário inválido!");
-                Console.WriteLine();
-                funcionario.EntregarPagamento();
-                Console.ReadKey();
+                Console.WriteLine(); // Linha em branco para melhor visualização
+                funcionario.EntregarPagamento(); //  Entrega o pagamento do funcionário escolhido
+                Console.ReadKey(); // Aguarda que o usuário pressione uma tecla para voltar ao menu principal
             }
             catch (Exception e)
             {
@@ -34,6 +40,9 @@
             }
         }
 
+        /// <summary>
+        /// Método responsável por obter o ID do funcionário por input do usuário.
+        /// </summary>
         private static int ObterID()
         {
             while (true)
@@ -57,11 +66,15 @@
             }
         }
 
+        /// <summary>
+        /// Exibe a lista de funcionários cadastrados.
+        /// </summary>
+        /// <param name="funcionarios"></param>
         private static void ListarFuncionarios(List<Funcionario> funcionarios)
         {
             foreach (var funcionario in funcionarios)
             {
-                funcionario.Exibir();
+                Console.WriteLine($"{funcionario.FuncionarioId}. {funcionario.Nome} ({funcionario.Cargo})");
                 Console.WriteLine();
             }
         }
